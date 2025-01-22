@@ -1,416 +1,125 @@
-/* .App {
+/* Overall App styling */
+.App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #f4f6f9; /* Light gray background */
   min-height: 100vh;
+  background-image: linear-gradient(135deg, #e0e7ff, #f0f4f8); /* Soft gradient background */
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: flex-start;
 }
 
-.App-link {
-  color: #61dafb;
+/* Header styling */
+h1 {
+  font-size: 2.5rem;
+  color: #2c3e50; /* Darker shade for the header text */
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Subtle text shadow */
+  font-weight: 600;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f8f9fa;
-}
-
-.app {
-  text-align: center;
-  padding: 20px;
-}
-
-.header {
-  margin-bottom: 30px;
-}
-
-.preview {
-  position: relative;
-  width: 200px;
-  margin: 0 auto;
-}
-
-.case-preview {
+/* Search input styling */
+input {
+  padding: 12px;
+  margin: 20px 0;
   width: 100%;
-  z-index: 1;
+  max-width: 400px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.3s ease;
+  background-color: #fff; /* White background for input */
+  color: #333; /* Dark text color for readability */
 }
 
-.band-preview {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  z-index: 0;
+input:focus {
+  border-color: #007bff; /* Blue border on focus */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Blue shadow on focus */
 }
 
-.carousel {
-  margin-top: 40px;
-}
-
-.carousel-container {
+/* Styling for Pokemon container */
+.pokemon-container {
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  justify-content: flex-start; /* Align the last row to the left */
   gap: 20px;
-  overflow-x: auto;
-  padding: 10px 0;
+  margin-top: 30px;
+  max-width: 1200px; /* Limit max width for a better view on large screens */
+  width: 100%;
 }
 
-.carousel-item {
+/* Styling for each Pokemon card */
+.pokemon-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
   text-align: center;
-  cursor: pointer;
+  width: 150px;
+  background-color: #ffffff; /* White background for cards */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #fafafa; /* Soft background for cards */
+  border: 1px solid #ddd; /* Soft border for cards */
 }
 
-.carousel-item img {
-  width: 80px;
-  height: auto;
-  border-radius: 10px;
-  border: 2px solid transparent;
+.pokemon-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  background-color: #f0f4f8; /* Light blue on hover */
 }
 
-.carousel-item.active img {
-  border-color: #007aff;
+/* Image styling for Pokemon */
+.pokemon-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 10px;
 }
 
-.carousel-item p {
-  margin-top: 5px;
-  font-size: 14px;
-  color: #333;
-}
-.hover-button {
-  background-color: #0071e3;
-  color: #ffffff;
-  border: none;
-  border-radius: 24px;
-  padding: 10px 20px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  margin-bottom: 0px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+/* Pokemon name styling */
+.pokemon-card h3 {
+  font-size: 1.1rem;
+  color: #333; /* Dark text color */
+  margin-top: 10px;
+  text-transform: capitalize;
+  font-weight: bold; /* Bold text for Pokémon names */
 }
 
-.hover-button:hover {
-  background-color: #005bb5; /* Darker shade on hover */
-  transform: scale(1.05); /* Slightly enlarge button on hover */
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+  .pokemon-container {
+    gap: 15px;
+  }
+
+  .pokemon-card {
+    width: 130px;
+  }
+
+  input {
+    width: 90%;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
 }
-/* 
-import React, { useState, useRef, useEffect } from "react";
 
-const App = () => {
-  const [isStarted, setIsStarted] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [isFrontView, setIsFrontView] = useState(true);  
-  const dropdownRef = useRef(null);
+@media (max-width: 480px) {
+  .pokemon-card {
+    width: 120px;
+    padding: 12px;
+  }
 
-  const toggleImage = () => {
-    setIsFrontView(!isFrontView);
-  };
+  input {
+    width: 100%;
+  }
 
-  
-
-  const handleClick = () => {
-    setIsStarted(true);
-  };
-
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
-  };
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setIsDropdownOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
-
-  return (
-    <div style={styles.container}>
-      <header style={styles.header}>
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg"
-          alt="Apple Logo"
-          style={styles.logo}
-        />
-        <span style={styles.headerText}>WATCH</span>
-      </header>
-
-      {/* Dropdown Container Outside of Content 
-      <div>
-
-      {isDropdownOpen && <div style={styles.overlay}></div>}
-
-      <div style={styles.dropdownContainer} ref={dropdownRef}>
-        <button style={styles.dropdownButton} onClick={toggleDropdown}>
-          Collections ▼
-        </button>
-        {isDropdownOpen && (
-          <div style={styles.dropdownMenu}>
-            <a href="#" style={styles.dropdownItem}>
-              Apple Watch Series 10
-            </a>
-            <a href="#" style={styles.dropdownItem}>
-              Apple Watch Hermès Series 10
-            </a>
-            <a href="#" style={{ ...styles.dropdownItem, ...styles.dropdownItemLast }}>
-              Apple Watch SE
-            </a>
-          </div>
-        )}
-      </div>
-    </div>
-
-      <div style={styles.content}>
-        {/* Text Content 
-        <div
-          style={{
-            ...styles.textContent,
-            ...(isStarted && styles.textContentHidden),
-          }}
-        >
-          <h3 style={styles.title}>Apple Watch Studio</h3>
-          <div style={styles.mainTextContainer}>
-            <h1 style={styles.mainText}>Choose a case.</h1>
-            <h1 style={styles.mainText}>Pick a band.</h1>
-            <h1 style={styles.mainText}>Create your own style.</h1>
-          </div>
-          <button style={styles.button} onClick={handleClick}>
-            Get started
-          </button>
-        </div>
-
-        <div
-          style={{
-            ...styles.watchContainer,
-            ...(isStarted && styles.watchContainerShifted),
-          }}
-        >
-          <div>
-            {isFrontView ? (
-              <img
-                src="/Apple-watch-series-10.webp"
-                alt="Front View of Apple Watch"
-                style={{
-                  ...styles.watchImage,
-                  ...(isStarted && styles.watchImageShifted),
-                }}
-              />
-            ) : (
-              <img
-                src="/-original-imah4jndwgy9yfhz.webp"
-                alt="Side View of Apple Watch"
-                style={{
-                  ...styles.sideWatchImage,
-                }}
-              />
-            )}
-          </div>
-
-          {isStarted && (
-            <>
-              <div>
-                <button style={styles.button} onClick={toggleImage}>
-                  {isFrontView ? "Switch to Side View" : "Switch to Front View"}
-                </button>
-              </div>
-              <p style={styles.headerText}>APPLE WATCH SERIES 10</p>
-              <p style={styles.headerText}>46mm Jet Black Aluminum Case with Black Solo Loop</p>
-              <h1 style={styles.headerText}>From $429</h1>
-              <div>
-                <button style={styles.button}>Size</button>
-                <button style={styles.button}>Case</button>
-                <button style={styles.button}>Band</button>
-              </div>
-            </>
-          )}
-        </div>
-
-      </div>
-    </div>
-  );
-};
-
-const styles = {
-  container: {
-    backgroundColor: "#ffffff",
-    height: "100vh",
-    fontFamily: "San Francisco, Arial, sans-serif",
-    overflowX: "hidden",
-  },
-  header: {
-    position: "absolute",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "flex-start",
-    marginBottom: "50px",
-    width: "90%",
-    margin: "30px",
-  },
-  logo: {
-    height: "18px",
-    marginBottom: "2px",
-  },
-  headerText: {
-    fontSize: "18px",
-    fontWeight: "bold",
-    marginLeft: "3px",
-    color: "#1d1d1f",
-  },
-  overlay: {
-    position: "fixed",
-    top: 0,
-    left: 0,
-    width: "100%",
-    height: "100%",
-    backgroundColor: "rgba(148, 148, 148, 0.7)", // Light white transparent background
-    zIndex: 50, // Ensure it is behind the dropdown
-  },
-  dropdownContainer: {
-    position: "absolute",
-    top: "20px",
-    right: "50%",
-    transform: "translateX(50%)",
-    zIndex: 100, // Ensure dropdown is above other content
-  },
-  dropdownButton: {
-    fontSize: "16px",
-    backgroundColor: "transparent",
-    border: "none",
-    padding: "10px 20px",
-    color: "#1d1d1f",
-    cursor: "pointer",
-    fontWeight: "600",
-    borderRadius: "8px",
-    textAlign: "center",
-  },
-  dropdownMenu: {
-    position: "absolute",
-    top: "40px", // Adjust the gap below the button
-    left: "50%",
-    transform: "translateX(-50%)", // Center the dropdown below the button
-    backgroundColor: "#ffffff",
-    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.15)", // Subtle shadow
-    borderRadius: "8px",
-    zIndex: 10,
-    width: "200px",
-  },
-  dropdownItem: {
-    display: "block",
-    padding: "12px 15px", // Adjust padding for spacing
-    color: "#1d1d1f",
-    textDecoration: "none",
-    fontSize: "14px",
-    fontWeight: "500",
-    textAlign: "center", // Center-align text
-    borderBottom: "1px solid #f1f1f1",
-    cursor: "pointer",
-  },
-  content: {
-    position: "relative",
-    marginTop: "70px",
-    width: "100%",
-    maxWidth: "1450px",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  textContent: {
-    opacity: 1,
-    transition: "opacity 0.8s ease-out",
-  },
-  textContentHidden: {
-    opacity: 0,
-    pointerEvents: "none", // Ensures the text section becomes inactive
-  },
-  title: {
-    fontSize: "18px",
-    fontWeight: "400",
-    color: "#1d1d1f",
-    marginBottom: "0px",
-  },
-  mainTextContainer: {
-    marginBottom: "30px",
-  },
-  mainText: {
-    fontSize: "58px",
-    fontWeight: "600",
-    color: "#1d1d1f",
-    margin: "10px 0",
-    lineHeight: "0.9",
-  },
-  button: {
-    backgroundColor: "#0071e3",
-    color: "#ffffff",
-    border: "none",
-    borderRadius: "980px",
-    padding: "12px 22px",
-    fontSize: "17px",
-    fontWeight: "400",
-    cursor: "pointer",
-    transition: "background-color 0.3s ease",
-  },
-  watchContainer: {
-    transform: "translateY(0) scale(1)", // Initial state
-    transition: "transform 1.5s cubic-bezier(0.4, 0, 0.2, 1)",
-    position: "relative",
-    width: "100%",
-    maxWidth: "700px",
-  },
-  watchContainerShifted: {
-    transform: "translateY(-55%) scale(0.8)", // Moves up by 50%
-    transition: "transform 1.5s cubic-bezier(0.4, 0, 0.2, 1)",
-  },
-  watchImage: {
-    width: "100%",
-    maxWidth: "600px",
-    height: "auto",
-    display: "block",
-    margin: "0 auto",
-    transition: "transform 1.5s cubic-bezier(0.4, 0, 0.2, 1)", // Smooth transition for size
-  },
-  sideWatchImage: {
-    width: "100%",
-    maxWidth: "300px",
-    height: "auto",
-    display: "block",
-    margin: "0 auto",
-    transition: "transform 1.5s cubic-bezier(0.4, 0, 0.2, 1)", // Smooth transition for size
-  },
-  watchImageShifted: {
-    transform: "scale(0.7)", // Scales down to 70% of the original size
-  },
-};
-
-export default App; */
+  h1 {
+    font-size: 1.8rem;
+  }
+}
